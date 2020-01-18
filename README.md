@@ -1,2 +1,2 @@
-# nolanpatrick.github.com
+# nolanpatrick.github.io
 Personal Site
