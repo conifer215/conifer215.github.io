@@ -1,2 +1,1 @@
-# nolanpatrick.github.io
-Personal Site
+This is the repository for my personal website [https://nadams.net].
