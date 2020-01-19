@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Projects | Nolan Adams</title>
+<link rel="stylesheet" type="text/css" href="resources/style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+</head>
+<body bgcolor=white>
+<div id="header">
+<p><b>Nolan Adams</b></p>
+</div>
+
+<div id="sidebarproj">
+<center><b>LINKS</b></center>
+<hr>
+<ul style="list-style-type:square;">
+<li><a href="https://nadams.net">Home</a><br>
+<li><a href="https://nadams.net/about.html">About Me</a><br>
+<li><a href="https://nadams.net/projects.html">My Projects</a><br>
+</ul>
+<hr>
+<ul>
+<li><a href="https://github.com/nolanpatrick">My GitHub</a><br>
+<li><a href="https://gitlab.com/nolanpatrick">My GitLab</a><br>
+</ul>
+<hr>
+<ul style="list-style-type:square;">
+<li><a href="https://www.firstinspires.org/">FIRST Robotics</a><br>
+</ul>
+<hr>
+</div>
+
+
+<div id="mainproj">
+<h2>Projects</h2>
+<p>Here are some of my past projects. Some are personal projects and some are things I worked on for FRC Team #862.</p>
+
+<table style="width: 100%">
+<tr>
+<th></th>
+<th></th>
+</tr>
+<tr>
+
+<td valign="top">
+<h3>Motor Test Bench</h3>
+<p>The motor test bench was the first almost-solo project I worked on for FRC Team #862. It was designed to take the place of a robot control 
+system during prototyping, in situations where we wanted to be able to test or demonstrate the function of some motorized assembly but did not 
+have access to a fully built-and-programmed control system to run it with. The motor test bench mainly constisted of robot components: four 
+left-over, obsolete Talon ESCs, two generic PWM controllers (meant for testing servo motors), a couple of 7805-based votage regulator boards, 
+fuses (hidden under the board), and a 120A breaker. All of this was housed in a modified Bosch toolbox.</p>
+<p>A few years after its original conception, myself and a few other team members upgraded the components to include a proper fuse panel and 
+brand new, more powerful ESCs. Unfortunately, I don't have any pictures of the new version.</p>
+</td>
+<td>
+<img src="resources/mtb_2.jpg">
+</td>
+</tr>
+<tr>
+<td valign="top">
+<h3>Sensor Test Bench</h3>
+<p>This is another solo project I worked on for the robotics team. Like the sensor test bench, this device is also designed for prototyping. 
+However, rather than control motors, this test bench reads the values from multiple analog and digital sensors and displays them on a screen. 
+The sensor test bench is based on an Arduino Mega. The Arduino reads the data from the sensors and displays it in a readable format on a large 
+monochrome LCD display. The Arduino and display are both powered by a 12V rechargable Li-ion battery pack connected to a dual 5V and 3.3V 
+regulator module. The sensors connect to a flush-mounted set of pin headers, which include a set of pull-up/pull-down resistors (this can be set 
+by flipping a switch also mounted on the panel). Everything is mounted to the inside of a blow-molded plastic case.</p>
+<p>The sensor test bench is programmed in Arduino-C. However, it was written using <a href="https://platformio.org/">PlatformIO</a> and therefore must also be compiled with it. 
+The code for this project is available on both <a href="https://github.com/nolanpatrick/sensor-test-bench-862">Github</a> and <a href="https://gitlab.com/nolanpatrick/sensor-test-bench-862">GitLab</a>.
+
+</td>
+<td>
+<img src="resources/stb_2.jpg">
+</td>
+</tr>
+</table>
+
+
+</div>
+
+<div id="footer">
+<p>&copy; Nolan Adams, 2020<br><script type="text/javascript">
+// script from BoogieJack.com
+var m = "Page Last Updated " + document.lastModified;
+var p = m.length-0;
+document.writeln("<div style='font-size: 12px;'>");
+document.write(m.substring(p, 0));
+document.writeln("</div>"); 
+</script>
+</p>
+	
+</div>
+
+</body>
+</html> 
