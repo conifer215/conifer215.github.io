@@ -69,4 +69,6 @@ img {
     max-width: 500px;
     height: auto;
 }
-
+ul {
+    list-style-type: square;
+}
