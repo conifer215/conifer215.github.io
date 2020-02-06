@@ -1,5 +1,5 @@
 #header {
-    background-color: #3d2954;
+    background-color: #640303;
     color: white;
     text-align: center;
     padding: 5px;
@@ -10,7 +10,7 @@
 #sidebar {
     font-family: 'Montserrat', serif;
     line-height: 30px;
-    background-color: #a99aab;
+    background-color: #d19d9d;
     height: 750px;    
     width: 10%;
     float: left;
@@ -20,7 +20,7 @@
 #sidebarproj {
     font-family: 'Montserrat', serif;
     line-height: 30px;
-    background-color: #a99aab;
+    background-color: #d19d9d;
     height: 2000px;    
     width: 10%;  
     float: left;
@@ -58,7 +58,7 @@
 #footer {
     font-family: 'Montserrat', serif;
     line-height: 30px;
-    background-color: #3d2954;
+    background-color: #460303;
     color: white;
     text-align: center;
     padding: 5px;
@@ -71,4 +71,7 @@ img {
 }
 ul {
     list-style-type: square;
+}
+a {
+    color: #640303;
 }
