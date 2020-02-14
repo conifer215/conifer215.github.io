@@ -2,75 +2,63 @@
     background-color: #640303;
     color: white;
     text-align: center;
-    padding: 5px;
     width: 100%;
-    font-family: 'Montserrat', serif;
     font-size: 2em;
+    padding: 5px;
+    height: 3em;
 }
 #sidebar {
-    font-family: 'Montserrat', serif;
     line-height: 30px;
-    background-color: #d19d9d;
-    height: 750px;    
-    width: 10%;
+    background-color: #d4d4d4;  
+    width: 132px;
+    height: 1000px;
     float: left;
-    padding: 5px; 
-    padding-right: 5px;
-}
-#sidebarproj {
-    font-family: 'Montserrat', serif;
-    line-height: 30px;
-    background-color: #d19d9d;
-    height: 2000px;    
-    width: 10%;  
-    float: left;
-    padding: 5px; 
-    padding-right: 5px;
+    padding: 0px;
 }
 #main {
-    font-family: 'Montserrat', serif;
-    background-color:#ffffff;
-    width:100%;
-    float:center;
-    padding:30px;
+    #width: 80%;
+    #float: left;
+    margin-left: 132px;
+    padding: 20px;
+    #border: 2px solid black;
 } 
-#mainleft {
-    font-family: 'Montserrat', serif;
-    background-color: #ffffff;
-    width: 50%;
-    float: left;
-    padding: 30px;
-} 
-#mainright {
-    font-family: 'Montserrat', serif;
-    background-color: #ffffff;
-    width: 50%
-    float: right;
-    padding: 30px;
-}
-#mainproj {
-    font-family: 'Montserrat', serif;
-    background-color: #ffffff;
-    width: 80%;
-    float: left;
-    padding: 30px;
-}
 #footer {
-    font-family: 'Montserrat', serif;
     line-height: 30px;
-    background-color: #460303;
+    background-color: #640303;
     color: white;
     text-align: center;
-    padding: 5px;
+    padding: 0px;
     float: left;
     width: 100%;
+}
+body {
+    font-family: 'Montserrat', serif;
+    margin: 0px;
 }
 img {
     max-width: 500px;
     max-height: 600px;
 }
 ul {
-    list-style-type: square;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100px;
+    background-color: #d4d4d4;
+}
+li a {
+    display: block;
+    width: 100px;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+li a:hover {
+    background-color: #640303;
+    color: white;
+}
+.active {
+    background-color: #640303;
+    color: white;
 }
 a {
     color: #640303;
