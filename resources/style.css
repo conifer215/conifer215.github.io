@@ -2,7 +2,7 @@
     background-color: #640303;
     color: white;
     text-align: center;
-    width: 100%;
+    /*width: 100%;*/
     font-size: 2em;
     padding: 5px;
     height: 3em;
@@ -15,13 +15,28 @@
     float: left;
     padding: 0px;
 }
+#sidebar2 {
+    line-height: 30px;
+    background-color: #e6e6e6;
+    height: 1000px;
+    width: 132px;
+    float: left;
+    padding: 0px;
+}
 #main {
     margin-left: 132px;
     padding: 20px;
     /*
     border: 2px solid black;
     */
-} 
+}
+#main2 {
+    margin-left: 264px;
+    padding: 20px;
+    /*
+    border: 2px solid black;
+    */
+}  
 #footer {
     line-height: 30px;
     background-color: #640303;
