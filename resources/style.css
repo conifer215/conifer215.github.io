@@ -1,3 +1,10 @@
+/* latin */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Montserrat Regular'), local('Montserrat-Regular'), url(https://nadams.net/resources/Montserrat-Regular.woff2) format('woff2');
+}
 #header {
     background-color: #640303;
     color: white;
@@ -47,7 +54,7 @@
     width: 100%;
 }
 body {
-    font-family: 'Montserrat', serif;
+    font-family: 'Montserrat';
     margin: 0px;
 }
 img {
