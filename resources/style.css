@@ -63,9 +63,10 @@ img {
 }
 ul {
     list-style-type: none;
+    text-align: center;
     margin: 0;
     padding: 0;
-    width: 100px;
+    width: 132px;
     background-color: #d4d4d4;
 }
 li a {
@@ -80,4 +81,7 @@ li a:hover {
 }
 a {
     color: #640303;
+}
+#brhomelinks {
+    background-color: 1DB954
 }
