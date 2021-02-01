@@ -30,6 +30,14 @@
     float: left;
     padding: 0px;
 }
+#sidebar1200 {
+    line-height: 30px;
+    background-color: #d4d4d4;  
+    width: 132px;
+    height: 1200px;
+    float: left;
+    padding: 0px;
+}
 #main {
     margin-left: 132px;
     padding: 20px;
