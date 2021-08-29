@@ -99,7 +99,6 @@ a {
 }
 
 figure {
-	float: left;
     display: flex;
     flex-flow: column;
     padding: 5px;
