@@ -97,3 +97,27 @@ a {
 #brhomelinks {
     background-color: 1DB954
 }
+
+figure {
+	float: left;
+    display: flex;
+    flex-flow: column;
+    padding: 5px;
+	padding-right: 20px;
+    max-width: 300px;
+	height: auto;
+    margin: auto;
+}
+
+figure img {
+	width: 300px;
+	height: auto;
+}
+
+figcaption {
+    background-color: #640303;
+	color: white;
+    font: smaller Montserrat;
+    padding: 5px;
+    text-align: center;
+}
