@@ -1,3 +1,3 @@
 This is the repository for my personal website [https://nadams.net].
 
-# Future development has been migrated to GitLab
+# Future development of all other projects has been migrated to GitLab
