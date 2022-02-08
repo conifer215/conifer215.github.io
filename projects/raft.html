@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>North | Projects | Nolan Adams</title>
+<title>Raft | Projects | Nolan Adams</title>
 <link rel="stylesheet" type="text/css" href="../resources/style.css">
 <link rel="icon" type="image/png" href="../resources/favicon_1.bmp">
 </head>
@@ -27,16 +27,57 @@
 
 <div id="main">
 <p><a href="../projects.html">Back to Projects</a>
-<h2>Raft</h2>
-<h4>2021 (ongoing)</h4>
+<h2>Raft: dragging FORTH into the modern age</h2>
+<h4>2021 - 2022 (ongoing)</h4>
 
-<p>Raft is the current working name for my most recent programming project: an interpreted stack-based programming language.
-This project takes inspiration from Alexey Kutepov (Tsoding)'s <a href="https://gitlab.com/tsoding/porth">Porth</a> project. 
+<p>About a year ago, I started learning about stack-oriented concatenative programming languages. That is, languages whose primary 
+method of data manipulation revolves around interacting with a single stack. As I did more research on the topic, my interest 
+grew, and I started taking an interest in FORTH. <a href="https://en.wikipedia.org/wiki/Forth_(programming_language)">FORTH</a> 
+is one such stack-based programming language, originally developed in the early 1970s by 
+<a href="https://en.wikipedia.org/wiki/Charles_H._Moore">Chuck Moore</a>. It continues to be used in specialized applications 
+to this day, more than 50 years after its conception.</p>
+
+<p>As such, <i>Raft</i> is the current working name for my most recent project: an implementation of a FORTH-compatible interpreted 
+programming language, designed to combine some of the most convenient features of more modern programming languages with FORTH's simplicity.
+I began this project after becoming inspired by Alexey Kutepov (Tsoding)'s <a href="https://gitlab.com/tsoding/porth">Porth</a> project. 
 Details of the project can be found in the GitLab repo here: <a href="https://gitlab.com/nolanpatrick/raft">nolanpatrick/raft</a>.</p>
+
+<p>
+<h3>Project Goals</h3>
+<ol>
+	<li>Fully FORTH-compatible</li>
+	<ul>
+		<li>Programs written in FORTH should run natively in Raft with little-to-no modification</li>
+	</ul>
+	<li>Approachable</li>
+	<ul>
+		<li>Syntax should (optionally) use familiar keywords that most beginner-level programmers would recognize.</li>
+		<li>Program format mimics other popular languages like C, but retains the stack-based style of FORTH.</li>
+	</ul>
+	<li>Easy to learn</li>
+	<ul>
+		<li>Familiar syntax combined with some modern amenities and a standard code layout should make it easy to get 
+			started, even for someone with little exposure to similar languages.
+		</li>
+	</ul>
+	<li>Fun!</li>
+	<ul>
+		<li>Don't leave it to me to tell you that programming doesn't have to be boring. It should be fun, or at the very least, interesting!</li>
+	</ul>
+</ol>
+</p>
+
+<p>
+<h3>Project Milestones</h3>
+
+Coming soon
+
+</p>
+
 </div>
 
 <div id="footer">
-<p>&copy; Nolan Adams, 2021<br>
+<p>&copy; Nolan Adams, 2021-2022<br>
 <script>
 // script from BoogieJack.com
 var m = "Page Last Updated " + document.lastModified;

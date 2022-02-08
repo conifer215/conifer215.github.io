@@ -40,7 +40,7 @@
 
 #footer {
     line-height: 30px;
-    background-color: teal;
+    background-color: #640303;
     color: white;
     text-align: center;
     padding: 0px;
@@ -65,7 +65,7 @@ img {
 }
 
 ul {
-    list-style-type: none;
+    list-style-type: disc;
 }
 
 ul.sidebar {
@@ -120,4 +120,19 @@ figcaption {
     font: smaller Montserrat;
     padding: 5px;
     text-align: center;
+}
+
+table {
+    /*border-spacing: 2px;
+    border-color: #640303;*/
+    border-collapse: collapse;
+}
+
+th {
+    padding: 10px;
+    font-weight: bold;
+}
+
+td {
+    padding: 10px;
 }
