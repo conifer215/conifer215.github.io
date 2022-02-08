@@ -7,10 +7,9 @@
 }
 
 #header {
-    background-color: teal;
+    background-color: #640303;
     color: white;
     text-align: center;
-    /*width: 100%;*/
     font-size: 2em;
     padding: 5px;
     height: 3em;
@@ -18,8 +17,7 @@
 
 #sidebar-bg {
     line-height: 30px;
-    /*background-color: #d4d4d4;*/
-	background-color: #353535;
+    background-color: #d4d4d4;
     width: 132px;
     height: 1000px;
     float: left;
@@ -28,8 +26,7 @@
 
 #sidebar1200-bg {
     line-height: 30px;
-    /*background-color: #d4d4d4;*/
-	background-color: #353535;
+    background-color: #d4d4d4;
     width: 132px;
     height: 1400px;
     float: left;
@@ -39,9 +36,6 @@
 #main {
     margin-left: 132px;
     padding: 20px;
-    /*
-    border: 2px solid black;
-    */
 }
 
 #footer {
@@ -55,15 +49,14 @@
 }
 
 a {
-    /*color: #DA0037;*/
-	color: #009e9e;
+    color: #640303;
 }
 
 body {
     font-family: 'Montserrat', sans-serif;
     margin: 0px;
-	color: white;
-	background-color: #171717;
+	color: black;
+    background-color: white;
 }
 
 img {
@@ -81,8 +74,7 @@ ul.sidebar {
     margin: 0;
     padding: 0;
     width: 132px;
-    /*background-color: #d4d4d4;*/
-	background-color: #353535;
+    background-color: #d4d4d4;
 }
 
 li.sidebar a {
@@ -90,7 +82,7 @@ li.sidebar a {
     width: 100px;
     padding: 8px 16px;
     text-decoration: none;
-	color: white;
+	color: black;
 }
 
 li.sidebar-active a {
@@ -99,11 +91,11 @@ li.sidebar-active a {
     padding: 8px 16px;
     text-decoration: none;
 	color: white;
-	background-color: teal;
+	background-color: #640303;
 }
 
 li.sidebar a:hover {
-    background-color: #009e9e;
+    background-color: #7c0404;
     color: white;
 }
 
@@ -124,7 +116,7 @@ figure img {
 
 figcaption {
 	color: white;
-    background-color: teal;
+    background-color: #640303;
     font: smaller Montserrat;
     padding: 5px;
     text-align: center;
