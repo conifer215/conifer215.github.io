@@ -11,7 +11,9 @@
 <p><b>Nolan Adams</b></p>
 </div>
 
-<div id="sidebar1200-bg">
+<div class="body-wrapper">
+
+<div class="sidebar-auto-bg">
 <ul class=sidebar>
 	<li class=sidebar><a href="../index.html">Home</a></li>
 	<li class=sidebar><a href="../aboutme.html">About Me</a></li>
@@ -29,6 +31,8 @@
 <p><a href="../projects.html">Back to Projects</a>
 <h2>Raft: dragging FORTH into the modern age</h2>
 <h4>2021 - 2022 (ongoing)</h4>
+
+<a class="linkbtn" style="background-color: #FC6D27" href="https://gitlab.com/nolanpatrick/raft">GitLab Project</a>
 
 <p>About a year ago, I started learning about stack-oriented concatenative programming languages. That is, languages whose primary 
 method of data manipulation revolves around interacting with a single stack. As I did more research on the topic, my interest 
@@ -69,12 +73,31 @@ Details of the project can be found in the GitLab repo here: <a href="https://gi
 </p>
 
 <p>
-<h3>Project Milestones</h3>
+<h3>Examples</h3>
 
-Coming soon
+The language and interpreter are in the early stages of development, but I do have some things working.
+Here is an example of FORTH code that runs completely unmodified in Raft:
 
+<pre class="code-snippet">
+<code>
+: QUADRATIC ( a b c x -- n )
+    ( FORTH code borrowed from https://www.forth.com/starting-forth/5-fixed-point-arithmetic/ )
+    >R SWAP ROT R@ * + R> * +
+;
+
+: main
+    ( This is the Raft main function )
+    2 7 9 3
+    QUADRATIC .
+;
+</code>
+</pre>
+
+The above code is an excerpt from the <a href="https://gitlab.com/nolanpatrick/raft/-/blob/main/eval/forth.n">forth.n</a> evaluation program. It shows my current 
+progress well as it highlights use of both procedures and the return stack. In the full program, another new feature is demonstrated: including code from 
+other files.
 </p>
-
+</div>
 </div>
 
 <div id="footer">
