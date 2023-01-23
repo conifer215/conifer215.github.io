@@ -1,4 +1,7 @@
 /* Default stylesheet for https://nadams.net */
+/* Red primary: #640303 */
+/* Red secondary: 7c0404 */
+
 @font-face {
   font-family: 'Montserrat';
   font-style: normal;
@@ -7,7 +10,7 @@
 }
 
 #header {
-    background-color: #640303;
+    background-color: #181818;
     color: white;
     text-align: center;
     font-size: 2em;
@@ -35,7 +38,7 @@
 
 .sidebar-auto-bg {
     line-height: 30px;
-    background-color: #d4d4d4;
+    background-color: #202020;
     width: 132px;
     max-width: 132px;
     min-height: 750px;
@@ -58,7 +61,7 @@
 
 #footer {
     line-height: 30px;
-    background-color: #640303;
+    background-color: #181818;
     color: white;
     text-align: center;
     padding: 0px;
@@ -67,14 +70,15 @@
 }
 
 a {
-    color: #640303;
+    color: #4D0092;
 }
 
 body {
     font-family: 'Montserrat', sans-serif;
     margin: 0px;
 	color: black;
-    background-color: white;
+    /* background-color: white; */
+	background-color: white;
 }
 
 img {
@@ -92,7 +96,7 @@ ul.sidebar {
     margin: 0;
     padding: 0;
     width: 132px;
-    background-color: #d4d4d4;
+    background-color: #202020;
 }
 
 li.sidebar a {
@@ -100,7 +104,7 @@ li.sidebar a {
     width: 100px;
     padding: 8px 16px;
     text-decoration: none;
-	color: black;
+	color: white;
 }
 
 li.sidebar-active a {
@@ -108,12 +112,13 @@ li.sidebar-active a {
     width: 100px;
     padding: 8px 16px;
     text-decoration: none;
-	color: white;
-	background-color: #640303;
+	color: black;
+	background-color: white;
+	font-weight: bold;
 }
 
 li.sidebar a:hover {
-    background-color: #7c0404;
+    background-color: #646464;
     color: white;
 }
 
@@ -134,7 +139,7 @@ figure img {
 
 figcaption {
 	color: white;
-    background-color: #640303;
+    background-color: #181818;
     font: smaller Montserrat;
     padding: 5px;
     text-align: center;
@@ -142,7 +147,7 @@ figcaption {
 
 table {
     /*border-spacing: 2px;
-    border-color: #640303;*/
+    border-color: #181818;*/
     border-collapse: collapse;
 }
 
@@ -161,7 +166,7 @@ pre.code-snippet {
 	width: auto;
 	padding: 10px;
 	border-radius: 10px;
-	border: 3px solid #640303;
+	border: 3px solid #181818;
 	font-size: 10pt;
 	box-shadow: 0 0 5px black inset;
 }

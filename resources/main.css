@@ -1,0 +1,155 @@
+:root {
+    --sidebar-width: 150px;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Montserrat Regular'), local('Montserrat-Regular'), url(https://nadams.net/resources/Montserrat-Regular.woff2) format('woff2');
+}
+
+/* Header */
+
+#header {
+    background-color: #181818;
+    color: white;
+    text-align: center;
+    font-size: 2em;
+    padding: 5px;
+    height: 3em;
+}
+
+/* Body container */
+
+#body-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+/* Inspired by: https://www.w3schools.com/w3css/w3css_sidebar.asp */
+
+.sidebar-col {
+    /* border: 1px solid black; */
+    display: "block";
+    min-width: var(--sidebar-width);
+    float: left;
+    background-color: #202020;
+    /* min-height: 100vh; */
+    height: inherit;
+}
+
+.sidebar-link {
+    display: block;
+    padding: 16px 16px;
+    text-decoration: none;
+	color: white;
+    text-align: center;
+}
+
+.sidebar-link:hover:not(.sidebar-active) {
+    background-color: #646464;
+    color: white;
+}
+
+.sidebar-active {
+	color: black;
+	background-color: white;
+	font-weight: bold;
+}
+
+/* Body */
+
+body {
+    margin: 0%;
+    /* min-height: 100vh; */
+    font-family: 'Montserrat', sans-serif;
+    /* border: 1px solid black; */
+}
+
+#body-content {
+    /* border: 1px solid black; */
+    margin-top: 1%;
+    margin-left: 25px;
+    margin-right: 25px;
+    /* min-height: 90vh; */
+    height: inherit;
+    width: 100%;
+}
+
+/* Footer */
+
+#footer {
+    line-height: 30px;
+    background-color: #181818;
+    color: white;
+    text-align: center;
+    padding: 0px;
+    float: left;
+    width: 100%;
+}
+
+#last-modified {
+    font-size: 10px;
+}
+
+/* Figures */
+
+figure {
+	display: flex;
+    flex-flow: column;
+    padding: 15px;
+	padding-right: 15px;
+    max-width: 300px;
+	height: auto;
+    margin: auto;
+}
+
+figure img {
+	width: 300px;
+	height: auto;
+}
+
+figcaption {
+	color: white;
+    background-color: #181818;
+    font: smaller Montserrat;
+    padding: 5px;
+    text-align: center;
+}
+
+/* Homepage stuff */
+
+
+.linkbtn {
+    text-decoration:none;
+    font-weight: bold;
+    display: block;
+    color: white;
+    border-radius: 5px;
+    padding: 7px 10px;
+    text-align: center;
+    width: 150px;
+    margin: 10px;
+    border: 1px solid black;
+}
+.linkbtn:hover {
+   box-shadow: 0 0 5px black inset;
+}
+.umbtn {
+    background-color: #00274C;
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    color: #FFCB05;
+    border-radius: 5px;
+    padding: 7px 10px;
+    text-align: center;
+    width: 150px;
+    margin: 10px;
+    border: 1px solid black;
+}
+.umbtn:hover {
+    box-shadow: 0 0 5px #FFCB05 inset;
+}
