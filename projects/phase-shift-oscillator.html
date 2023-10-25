@@ -71,7 +71,36 @@ oscillators.</p>
 reactive components which will together introduce a phase shift of 180° at a particular frequency. The phase shift of the amplifier cannot change (significantly), so the reactivity of the feedback 
 path will cause the oscillation frequency to adjust until the total phase shift of the loop reaches equilibrium at 360°.</p>
 
-<h3>Further updates coming soon</h3>
+<h3>Design</h3>
+
+<p>In my experience, the best way to learn something is to do it. I decided to set some requirements for my first design:</p>
+<ul>
+	<li>Frequency: 1 kHz</li>
+	<li>Amplitude: 12 V peak-to-peak</li>
+</ul>
+
+<h4>Feedback Path</h4>
+<p>I figured the best place to start would be the feedback path because it will determine the requirements for the rest of the circuit.</p>
+
+<p>The feedback path must provide 180° of phase shift at the desired frequency. Most phase-shift oscillator designs use three cascaded low-pass 
+or high-pass RC filters. A single-stage RC filter can provide up-to 90° of phase shift, so at least two are required for the oscillator to 
+function properly. Using a three-stage filter, each stage contributes around 60°, but not equally. This is because each successive stage loads 
+down the previous stage.</p>
+
+<a href="images/oscillator/feedback_schematics.png">
+	<figure style="float: right">
+		<img src="images/oscillator/feedback_schematics.png" alt="Phase-shift oscillator feedback schematics">
+		<figcaption>Three-stage feedback path circuits</figcaption>
+	</figure>
+</a>
+
+<p>I used Kirchoff's Current Law to find the transfer functions of these circuits. As it happens, both functions share the same form
+so it is possible to find both at the same time if you substitute the term that differs. The transfer functions work out to be:</p>
+
+<img src="images/oscillator/feedback_functions.png">
+
+<!-- H_{HP}(j\omega) &= \frac{1}{(\frac{1}{j\omega RC})^3+5(\frac{1}{j\omega RC})^2+6(\frac{1}{j\omega RC})+1} \\ -->
+<!-- H_{LP}(j\omega) &= \frac{1}{(j\omega RC)^3+5(j\omega RC)^2+6(j\omega RC)+1} \\ -->
 
 <h3>References</h3>
 <ol>
