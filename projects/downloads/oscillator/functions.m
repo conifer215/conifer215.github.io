@@ -11,6 +11,8 @@ k_lp = j*omega*R*C;
 H_HP = 1 ./ ((k_hp).^3 + 5*(k_hp).^2 + 6*(k_hp) + 1);
 H_LP = 1 ./ ((k_lp).^3 + 5*(k_lp).^2 + 6*(k_lp) + 1);
 
+
+
 subplot(211);
 semilogx(f, 20*log10(H_HP)); hold on
 semilogx(f, 20*log10(H_LP));
