@@ -72,12 +72,12 @@ oscillators.</p>
 reactive components which will together introduce a phase shift of 180° at a particular frequency. The phase shift of the amplifier normally won't change (much), so the reactivity of the feedback 
 path will cause the oscillation frequency to adjust until the total phase shift of the loop reaches equilibrium at 360°.</p>
 
-<h3>Design</h3>
+<h3>Circuit Analysis</h3>
 
 <p>In my experience, the best way to learn something is to do it. I decided to set some requirements for my oscillator design:</p>
 <ul>
 	<li>Frequency: 1 kHz</li>
-	<li>Amplitude: 12 V peak-to-peak</li>
+	<li>Amplitude: 1 V peak-to-peak</li>
 </ul>
 
 <h4>Deriving the Feedback Path</h4>
@@ -175,9 +175,28 @@ capacitor values, and the result is the same no matter which topology you choose
 <p>These values can be seen on the Bode plot of the feedback path:</p>
 <img src="images/oscillator/mag_phase_plot.png">
 
+<p>I also plotted both low-pass and high-pass configurations together to highlight an observation:
+built with the same components, an oscillator using the low-pass feedback path will oscillate at a higher frequency than 
+one built with the high-pass configuration. In the plot below, the blue lines represent the high-pass filter and the 
+orange lines represent the low-pass filter.</p>
+<img src="images/oscillator/bode_plot_feedback_comparison.png">
+
+<p>The ratio of oscillation frequencies is constant:</p>
+<!-- LaTeX: -->
+<!-- \omega_{LP} &= \frac{\sqrt{6}}{RC} \\ -->
+<!-- \omega_{HP} &= \frac{1}{RC\sqrt{6}} \\ -->
+<!-- \frac{\omega_{LP}}{\omega_{HP}} &= \frac{\frac{\sqrt{6}}{RC}}{\frac{1}{RC\sqrt{6}}} = \frac{\sqrt{6}}{RC} \frac{RC\sqrt{6}}{1} \\ -->
+<!-- \frac{\omega_{LP}}{\omega_{HP}} &= \sqrt{6}\sqrt{6} = 6 \\ -->
+<img src="images/oscillator/frequency_ratio.svg">
+
 <h4>Forward Path</h4>
 <p>Because the theoretical loop gain must equal 1, this means the amplifier in the forward path has to have a gain of -29 to compensate for the loss in the feedback path. 
-A simple inverting op-amp configuration works perfectly fine here.</p>
+The two most commonly-used components are an NPN bipolar transistor or an op-amp, but it is also possible to use a different amplifier such 
+as a vacuum tube.</p>
+
+<h3>Designing a 1 kHz Oscillator</h3>
+<p>Once I had a decent understanding of the theory behind oscillators and more specifically the phase-shift oscillator, I began 
+to think about how I wanted to design my own.</p>
 
 <h2>Further updates coming soon</h2>
 
