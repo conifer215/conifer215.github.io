@@ -37,12 +37,36 @@
 			<h4>Oct. 2023 (ongoing)</h4>
 
 			<p>In a world where just about everything has to have a microcontroller and internet connectivity, I've always thought there is a certain beauty in 
-			precisely-designed analog circuits. I recently had a free afternoon and decided to jump into learning about one such circuit I've seen in a few places: 
+			precisely-designed analog circuits. I recently had a free afternoon and decided to jump into learning about one such category of circuits I've seen in a few places: 
 			the humble analog sine wave oscillator.</p>
 
 			<p>Unlike the Pierce oscillator (used to generate the clock signal by most digital systems) and the beloved 555 timer, which both create square waves, 
 			the phase-shift oscillator is one of a handful of commonly-used sine wave oscillators.</p>
 
+			<hr>
+			<h2>Contents</h2>
+			<ul style="list-style: none;">
+				<li><a href="#theory">Theory/Background</a></li>
+				<li><a href="#analysis">Circuit Analysis</a></li>
+				<li>
+					<ul style="list-style: none;">
+						<li><a href="#deriving-feedback">Deriving the Feedback Path</a></li>
+						<li><a href="#deriving-forward">Forward Path</a></li>
+					</ul>
+				</li>
+				<li><a href="#design">Designing a 1 kHz Oscillator</a></li>
+				<li>
+					<ul style="list-style: none;">
+						<li><a href="#design-requirements">Requirements</a></li>
+						<li><a href="#design-choices">Design Choices</a></li>
+						<li><a href="#design-feedback">Feedback Path</a></li>
+						<li><a href="#design-amplifier">Amplifier</a></li>
+					</ul>
+				</li>
+			</ul>
+			<hr>
+
+			<a name="theory"></a>
 			<h3>Theory/Background</h3>
 
 			<p>For a closed-loop system to maintain oscillation, it must meet a few requirements:</p> 
@@ -76,8 +100,10 @@
 			reactive components which will together introduce a phase shift of 180° at a particular frequency. The phase shift of the amplifier normally won't change (much), so the reactivity of the feedback 
 			path will cause the oscillation frequency to adjust until the total phase shift of the loop reaches equilibrium at 360°.</p>
 
+			<a name="analysis"></a>
 			<h3>Circuit Analysis</h3>
 
+			<a name="deriving-feedback"></a>
 			<h4>Deriving the Feedback Path</h4>
 
 			<a href="images/oscillator/feedback_schematics.png">
@@ -189,15 +215,19 @@
 			<!-- \frac{\omega_{LP}}{\omega_{HP}} &= \sqrt{6}\sqrt{6} = 6 \\ -->
 			<img src="images/oscillator/frequency_ratio.svg">
 
+			<a name="deriving-forward"></a>
 			<h4>Forward Path</h4>
+
 			<p>Because the theoretical loop gain must equal 1, this means the amplifier in the forward path has to have a gain of -29 to compensate for the loss in the feedback path. 
 			The two most commonly-used components are an NPN bipolar transistor or an op-amp, but it is also possible to use a different amplifier such 
 			as a vacuum tube.</p>
 
+			<a name="design"></a>
 			<h3>Designing a 1 kHz Oscillator</h3>
 
 			<p>In my experience, the best way to learn something is to do it. I thought about it for a while and settled on some basic requirements to aim for.</p>
 
+			<a name="design-requirements"></a>
 			<h4>Requirements</h4>
 			<ol>
 				<li>Frequency: 1 kHz &plusmn; 5% (or 0.95 kHz to 1.05 kHz)</li>
@@ -210,6 +240,7 @@
 				<li>Assembly: should be easy to assemble with minimal tools and commonly-available components (through-hole construction, etc.)</li>
 			</ol>
 
+			<a name="design-choices"></a>
 			<h4>Design Choices</h4>
 
 			<p>In the design of any circuit, there are usually a number of design choices to be made. In this case, some of those include (in no particular order):</p>
@@ -222,6 +253,20 @@
 				<li>etc.</li>
 			</ul>
 
+			<a name="design-feedback"></a>
+			<h4>Feedback Path</h4>
+
+			<p>Ideally, the feedback path would be as low-impedance as possible to maximize its immunity to capacitive coupling. For capacitors, impedance is inversely 
+			proportional to capacitance. I had a look through my parts bin and the lowest value capacitors I could find were 10 nF ceramic disc capacitors (marked 103).</p>
+
+			<p>Using 10 nF and the two different three-stage filters discussed earlier:</p>
+			<!-- LaTeX: -->
+			<!-- C &= 10 \: \textrm{nF} \\ -->
+			<!-- R_{LP} &= \frac{\sqrt{6}}{2\pi fC} = \frac{\sqrt{6}}{2\pi \cdot 1\times 10^3 \cdot 10 \times 10^{-9}} = 38.985 \: \textrm{k}\Omega \\ -->
+			<!-- R_{HP} &= \frac{1}{2\pi fC \sqrt{6}} = \frac{1}{2\pi \cdot 1\times 10^3 \cdot 10 \times 10^{-9} \cdot \sqrt{6}} = 6.497 \: \textrm{k}\Omega -->
+			<img src="images/oscillator/resistor_10khz.svg">
+
+			<a name="design-amplifier"></a>
 			<h4>Amplifier</h4>
 
 			<p>For the amplifier, I decided to go with an op-amp for the following reasons:</p>
@@ -303,18 +348,6 @@
 			the UA741CN and MC33079P may not be suitable. The bandwidth of the UA741CN at the theoretical 29x gain is another issue, as having a bandwidth 
 			near the oscillation frequency could lead to unwanted attenuation in the amplification stage. Therefore, the TL08x family seemed like the best option 
 			given the parts available.</p>
-
-			<h4>Feedback Path</h4>
-
-			<p>Ideally, the feedback path would be as low-impedance as possible to maximize its immunity to capacitive coupling. For capacitors, impedance is inversely 
-			proportional to capacitance. I had a look through my parts bin and the lowest value capacitors I could find were 10 nF ceramic disc capacitors (marked 103).</p>
-
-			<p>Using 10 nF and the two different three-stage filters discussed earlier:</p>
-			<!-- LaTeX: -->
-			<!-- C &= 10 \: \textrm{nF} \\ -->
-			<!-- R_{LP} &= \frac{\sqrt{6}}{2\pi fC} = \frac{\sqrt{6}}{2\pi \cdot 1\times 10^3 \cdot 10 \times 10^{-9}} = 38.985 \: \textrm{k}\Omega \\ -->
-			<!-- R_{HP} &= \frac{1}{2\pi fC \sqrt{6}} = \frac{1}{2\pi \cdot 1\times 10^3 \cdot 10 \times 10^{-9} \cdot \sqrt{6}} = 6.497 \: \textrm{k}\Omega -->
-			<img src="images/oscillator/resistor_10khz.svg">
 
 			<h2>This page is a work-in-progress, further updates are coming soon</h2>
 
