@@ -1,66 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<title>ATX Bench Power Supply | Projects | Nolan Adams</title>
-<link rel="stylesheet" type="text/css" href="../resources/style.css">
-<link rel="icon" type="image/png" href="../resources/favicon_1.bmp">
+	<meta charset="UTF-8">
+	<title>ATX Bench Power Supply | Projects | Nolan Adams</title>
+	<link rel="stylesheet" type="text/css" href="../resources/main.css">
+	<link rel="icon" type="image/bmp" href="../resources/favicon_blk.bmp">
+	<script src="../resources/script.js"></script>
 </head>
+
 <body>
-<div id="header">
-<p><b>Nolan Adams</b></p>
-</div>
 
-<div class="body-wrapper">
+	<!-- HEADER -->
+	<div id="header">
+		<p><b>Nolan Adams</b></p>
+	</div>
 
-<div class="sidebar-auto-bg">
-<ul class=sidebar>
-	<li class=sidebar><a href="../index.html">Home</a></li>
-	<li class=sidebar><a href="../aboutme.html">About Me</a></li>
-	<li class=sidebar-active><a href="../projects.html">Projects</a></li>
-	<li class=sidebar><a href="../resume.html">Resume</a></li>
-	<li class=sidebar><a href="../contact.html">Contact</a></li>
-</ul>
-<br>
-<ul class=sidebar>
-	<li class=sidebar><a href="../privacy.html">Privacy</a></li>
-</ul>
-</div>
+	<div id="body-container">
+		<!-- SIDEBAR -->
+		<div id="sidebar-main" class="sidebar-col">
+			<a href="../index.html" class="sidebar-link">Home</a>
+			<a href="../aboutme.html" class="sidebar-link">About Me</a>
+			<a href="../projects.html" class="sidebar-link sidebar-active">Projects</a>
+			<a href="../resume.html" class="sidebar-link">Resume</a>
+			<a href="../contact.html" class="sidebar-link">Contact</a>
+			<a href="https://www.linkedin.com/in/nolanadams/" class="sidebar-link">LinkedIn</a>
+		</div>
 
-<div id="main">
-<p><a href="../projects.html">Back to Projects</a>
-<h2>ATX Bench Power Supply</h2>
-<table align="right" style="margin-left: 10px; margin-bottom: 10px;">
-<tr>
-	<td><img src="images/atx_bench_psu/closed_up.JPG" width="245" alt="Final product"></td>
-	<td><img src="images/atx_bench_psu/overview.JPG" width="245" alt="Internal view"></td>
-</tr>
-<tr>
-	<td><img src="images/atx_bench_psu/connections.JPG" width="245" alt="Internal connections"></td>
-</tr>
-</table>
-<h4>Approx. 2016</h4>
-<p>The ATX power supply to bench power supply conversion is a very popular beginner electronics project. It involves 
-modifying a stock ATX power supply from an old computer to be usable as a bench power supply for further electronics work. 
-The result of this project was the power supply that I used all the way from 2016 to early 2020, when I upgraded to 
-a much better power supply, the RIDEN RD6006.</p>
-<p>The first time I built one of these, it was with the help of my grandfather. The included pictures are the second 
-iteration of this project, after the first one broke down due being based on a very low-quality power supply.</p>
-</div>
-</div>
+		<!-- MAIN CONTENT -->
+		<div id="body-content">
+			<input id="sidebar-button" type="button" value="Hide sidebar" onclick="sidebarToggle()"/>
 
-<div id="footer">
-<p>&copy; Nolan Adams, 2020<br>
-<script>
-// script from BoogieJack.com
-var m = "Page Last Updated " + document.lastModified;
-var p = m.length-0;
-document.writeln("<div style='font-size: 12px;'>");
-document.write(m.substring(p, 0));
-document.writeln("</div>"); 
-</script>
-</p>	
-</div>
+			<p><a href="../projects.html">Back to Projects</a>
+
+			<h2>ATX Bench Power Supply</h2>
+			<table align="right" style="margin-left: 10px; margin-bottom: 10px;">
+			<tr>
+				<td><img src="images/atx_bench_psu/closed_up.JPG" width="245" alt="Final product"></td>
+				<td><img src="images/atx_bench_psu/overview.JPG" width="245" alt="Internal view"></td>
+			</tr>
+			<tr>
+				<td><img src="images/atx_bench_psu/connections.JPG" width="245" alt="Internal connections"></td>
+			</tr>
+			</table>
+			<h4>Approx. 2016</h4>
+			<p>The ATX power supply to bench power supply conversion is a very popular beginner electronics project. It involves 
+			modifying a stock ATX power supply from an old computer to be usable as a bench power supply for further electronics work. 
+			The result of this project was the power supply that I used all the way from 2016 to early 2020, when I upgraded to 
+			a much better power supply, the RIDEN RD6006.</p>
+			<p>The first time I built one of these, it was with the help of my grandfather. The included pictures are the second 
+			iteration of this project, after the first one broke down due being based on a very low-quality power supply.</p>
+			
+			
+		</div>
+	</div>
+
+	<!-- FOOTER -->
+	<div id="footer">
+		<p>&copy; Nolan Adams, 2020-2023</p>
+		<p id="last-modified" ></p>
+		<p><a style="font-size: 12px;" href="../privacy.html">Privacy</a></p>
+
+		<script>
+			lastModifiedField = document.getElementById("last-modified");
+			lastModifiedField.textContent = "Last modified ".concat(document.lastModified);
+		</script>
+	</div>
 
 </body>
 </html> 

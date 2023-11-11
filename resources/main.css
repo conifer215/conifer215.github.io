@@ -78,6 +78,16 @@ body {
     width: 100%;
 }
 
+.image {
+    width: 550px;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 0.5em;
+}
+
 /* Footer */
 
 #footer {
