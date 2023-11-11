@@ -32,12 +32,12 @@
 <h2>Self-Learning: Phase-Shift Oscillator</h2>
 <h4>Oct. 2023 (ongoing)</h4>
 
-<p>I was recently working on an op-amp based amplifier circuit for my university's Senior Design class with my team. We quickly we ran into an issue we hadn't anticipated: the switching noise 
-of the power supply was causing the op-amp circuit to resonate. Though we eventually solved the issue, it made me wonder whether such a situation would have any practical uses. I have always had an interest 
-in purely analog circuits, so when I had a free afternoon I began researching different analog oscillator circuits.</p>
+<p>In a world where just about everything has to have a microcontroller and internet connectivity, I've always thought there is a certain beauty in 
+precisely-designed analog circuits. I recently had a free afternoon and decided to jump into learning about one such circuit I've seen in a few places: 
+the humble analog sine wave oscillator.</p>
 
-<p>Unlike the famous NE555 timer or the Pierce oscillator (used by many microcontrollers), which both create square waves, the phase-shift oscillator is one of a small number of commonly-used sine wave 
-oscillators.</p>
+<p>Unlike the Pierce oscillator (used to generate the clock signal by most digital systems) and the beloved 555 timer, which both create square waves, 
+the phase-shift oscillator is one of a handful of commonly-used sine wave oscillators.</p>
 
 <h3>Theory/Background</h3>
 
@@ -74,12 +74,6 @@ path will cause the oscillation frequency to adjust until the total phase shift 
 
 <h3>Circuit Analysis</h3>
 
-<p>In my experience, the best way to learn something is to do it. I decided to set some requirements for my oscillator design:</p>
-<ul>
-	<li>Frequency: 1 kHz</li>
-	<li>Amplitude: 1 V peak-to-peak</li>
-</ul>
-
 <h4>Deriving the Feedback Path</h4>
 
 <a href="images/oscillator/feedback_schematics.png">
@@ -96,8 +90,8 @@ or high-pass RC filters. A single-stage RC filter can provide up-to 90° of phas
 function properly. Using a three-stage filter, each stage contributes around 60°, but not equally. This is because the impedance of each successive stage loads 
 down the previous stage. The following calculations assume all three resistors are equal and all three capacitors are equal.</p>
 
-<p>I used Kirchoff's Current Law to find the transfer functions of these circuits (as it happens, both functions share the same form
-making it possible to find both at the same time by substituting the term that differs). I derived the transfer functions to be:</p>
+<p>I used Kirchhoff's Current Law to find the transfer functions of these circuits (as it happens, both functions share the same form
+making it possible to find both at the same time by substituting the complex term that differs). I derived the transfer functions to be:</p>
 
 <!-- LaTeX: -->
 <!-- H_{HP}(j\omega) &= \frac{1}{(\frac{1}{j\omega RC})^3+5(\frac{1}{j\omega RC})^2+6(\frac{1}{j\omega RC})+1} \\ -->
@@ -179,7 +173,9 @@ capacitor values, and the result is the same no matter which topology you choose
 built with the same components, an oscillator using the low-pass feedback path will oscillate at a higher frequency than 
 one built with the high-pass configuration. In the plot below, the blue lines represent the high-pass filter and the 
 orange lines represent the low-pass filter.</p>
-<img src="images/oscillator/bode_plot_feedback_comparison.png">
+<img src="images/oscillator/bode_plot_feedback_comparison.svg">
+
+<p>In the phase plot, the oscillation frequency is where we see the jump from -&#960; to +&#960; (the phase crossover frequency).</p>
 
 <p>The ratio of oscillation frequencies is constant:</p>
 <!-- LaTeX: -->
@@ -195,10 +191,128 @@ The two most commonly-used components are an NPN bipolar transistor or an op-amp
 as a vacuum tube.</p>
 
 <h3>Designing a 1 kHz Oscillator</h3>
-<p>Once I had a decent understanding of the theory behind oscillators and more specifically the phase-shift oscillator, I began 
-to think about how I wanted to design my own.</p>
 
-<h2>Further updates coming soon</h2>
+<p>In my experience, the best way to learn something is to do it. I thought about it for a while and settled on some basic requirements to aim for.</p>
+
+<h4>Requirements</h4>
+<ol>
+	<li>Frequency: 1 kHz &plusmn; 5% (or 0.95 kHz to 1.05 kHz)</li>
+	<li>Amplitude: fixed 12 V peak-to-peak &plusmn; 5% (or 11.4 V to 12.6 V)
+		<ul>
+			<li>Alternatively, an adjustable output amplitude is acceptable if a fixed amplitude cannot be reliably achieved.</li>
+		</ul>
+	</li>
+	<li>Power: must be able to operate on a &plusmn;12 V power supply (<a href="atx_bench_psu.html">like this one</a>)</li>
+	<li>Assembly: should be easy to assemble with minimal tools and commonly-available components (through-hole construction, etc.)</li>
+</ol>
+
+<h4>Design Choices</h4>
+
+<p>In the design of any circuit, there are usually a number of design choices to be made. In this case, some of those include (in no particular order):</p>
+
+<ul>
+	<li>Amplifier circuit (op-amp, discrete transistor, etc.)</li>
+	<li>Feedback path architecture (low-pass vs. high-pass)</li>
+	<li>Number of stages in feedback path</li>
+	<li>Impedance of feedback path</li>
+	<li>etc.</li>
+</ul>
+
+<h4>Amplifier</h4>
+
+<p>For the amplifier, I decided to go with an op-amp for the following reasons:</p>
+<ol>
+	<li>I have more experience with op-amp circuits</li>
+	<li>I have a lot of op-amps in my parts bin</li>
+</ol>
+<p>I also have a box of assorted transistors, but since they are cheap generic parts from Amazon, they came with no documentation. This would make it much more 
+difficult to debug potential issues as the characteristics of any given part are a mystery.</p>
+
+<p>My choices of op-amps consisted of the parts I have on hand:</p>
+<ul>
+	<li>Texas Instruments TL081CP</li>
+	<li>Texas Instruments TL082CP</li>
+	<li>Texas Instruments TL084CN</li>
+	<li>Signetics UA741CN</li>
+	<li>Motorola MC33079P</li>
+</ul>
+
+<p>I decided it would be a good idea to break down the specifications of each to make a proper comparison. Here I only included the specs that I felt were 
+most relevant to the application.</p>
+
+<table border="1px">
+	<tr>
+		<th>Specifications</th>
+		<th>TL081CP</th>
+		<th>TL082CP</th>
+		<th>TL084CN</th>
+		<th>UA741CN</th>
+		<th>MC33079P</th>
+	</tr>
+	<tr>
+		<td>Supply Voltage</td>
+		<td>&plusmn;5 V to &plusmn;15 V</td>
+		<td>&plusmn;5 V to &plusmn;15 V</td>
+		<td>&plusmn;5 V to &plusmn;15 V</td>
+		<td>&plusmn;5 V to &plusmn;15 V</td>
+		<td>&plusmn;5 V to &plusmn;18 V</td>
+	</tr>
+	<tr>
+		<td>Unity-Gain BW</td>
+		<td>3 MHz</td>
+		<td>3 MHz</td>
+		<td>3 MHz</td>
+		<td>1 MHz</td>
+		<td>9 MHz</td>
+	</tr>
+	<tr>
+		<td>29x Gain BW</td>
+		<td>103 kHz</td>
+		<td>103 kHz</td>
+		<td>103 kHz</td>
+		<td>34 kHz</td>
+		<td>310 kHz</td>
+	</tr>
+	<tr>
+		<td>Input Resistance</td>
+		<td>~ 1 T&ohm;</td>
+		<td>~ 1 T&ohm;</td>
+		<td>~ 1 T&ohm;</td>
+		<td>300 k&ohm; to 2 M&ohm;</td>
+		<td>175 k&ohm;</td>
+	</tr>
+	<tr>
+		<td>Output Resistance</td>
+		<td>(not given)</td>
+		<td>(not given)</td>
+		<td>(not given)</td>
+		<td>75 &ohm;</td>
+		<td>37 &ohm;</td>
+	</tr>
+</table>
+
+<p>Note: all of these parts I have are quite old, so the datasheets I got online may not be 100% accurate. For those curious, the date codes on 
+these parts range from 1983 to 1995.</p>
+
+<p>All of the above parts meet the power supply requirement, but the input impedance is a big difference. Because the feedback path is 
+quite high-impedance by its nature, having a relatively low input impedance could dramatically affect the oscillation frequency. This means 
+the UA741CN and MC33079P may not be suitable. The bandwidth of the UA741CN at the theoretical 29x gain is another issue, as having a bandwidth 
+near the oscillation frequency could lead to unwanted attenuation in the amplification stage. Therefore, the TL08x family seemed like the best option 
+given the parts available.</p>
+
+<h4>Feedback Path</h4>
+
+<p>Ideally, the feedback path would be as low-impedance as possible to maximize its immunity to capacitive coupling. For capacitors, impedance is inversely 
+proportional to capacitance. I had a look through my parts bin and the lowest value capacitors I could find were 10 nF ceramic disc capacitors (marked 103).</p>
+
+<p>Using 10 nF and the two different three-stage filters discussed earlier:</p>
+<!-- LaTeX: -->
+<!-- C &= 10 \: \textrm{nF} \\ -->
+<!-- R_{LP} &= \frac{\sqrt{6}}{2\pi fC} = \frac{\sqrt{6}}{2\pi \cdot 1\times 10^3 \cdot 10 \times 10^{-9}} = 38.985 \: \textrm{k}\Omega \\ -->
+<!-- R_{HP} &= \frac{1}{2\pi fC \sqrt{6}} = \frac{1}{2\pi \cdot 1\times 10^3 \cdot 10 \times 10^{-9} \cdot \sqrt{6}} = 6.497 \: \textrm{k}\Omega -->
+<img src="images/oscillator/resistor_10khz.svg">
+
+<h2>This page is a work-in-progress, further updates are coming soon</h2>
 
 <h3>References</h3>
 <p>These are the references I found helpful in understanding the theory behind this circuit:</p>
@@ -212,7 +326,7 @@ to think about how I wanted to design my own.</p>
 	<li>Pen and paper</li>
 	<li>Texas Instruments TI-84 Plus calculator</li>
 	<li>Tektronix 2236 100 MHz analog oscilloscope</li>
-	<li><a href="https://octave.org/">GNU Octave</a> (for graphing the Bode plot)</li>
+	<li><a href="https://octave.org/">GNU Octave</a> (for graphing and double-checking math)</li>
 	<li><a href="https://latex2image.joeraut.com/">LaTeX to Image Converter by Joseph Rautenbach</a> (for writing the equations on this page)</li>
 	<li><a href="https://www.simetrix.co.uk/index.html">SIMetrix/SIMPLIS Elements</a> (for schematic capture)</li>
 </ol>
