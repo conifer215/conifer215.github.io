@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Digital Function Generator | Projects | Nolan Adams</title>
+	<link rel="stylesheet" type="text/css" href="../resources/main.css">
+	<link rel="icon" type="image/bmp" href="../resources/favicon_blk.bmp">
+	<script src="../resources/script.js"></script>
+</head>
+
+<body>
+
+	<!-- HEADER -->
+	<div id="header">
+		<p><b>Nolan Adams</b></p>
+	</div>
+
+	<div id="body-container">
+		<!-- SIDEBAR -->
+		<div id="sidebar-main" class="sidebar-col">
+			<a href="../index.html" class="sidebar-link">Home</a>
+			<a href="../aboutme.html" class="sidebar-link">About Me</a>
+			<a href="../projects.html" class="sidebar-link sidebar-active">Projects</a>
+			<a href="https://www.linkedin.com/in/nolanadams/" class="sidebar-link">LinkedIn</a>
+		</div>
+
+		<!-- MAIN CONTENT -->
+		<div id="body-content">
+			<input id="sidebar-button" type="button" value="Hide sidebar" onclick="sidebarToggle()"/>
+
+			<p><a href="../projects.html">Back to Projects</a>
+
+			<h2>Digital Function Generator</h2>
+			<h4>Apr. 2024</h4>
+			
+			<a href="images/wavegen/final.jpg">
+				<figure style="float: right;">
+					<img src="images/wavegen/final.jpg" alt="Final prototype configured for 1 kHz sine wave">
+					<figcaption>Final prototype configured for 1 kHz sine wave</figcaption>
+				</figure>
+			</a>
+			
+			<p>For the final project in one of my computer engineering classes, we were tasked with engineering and building a prototype of any embedded system of our choosing. 
+				I chose to design a digital function generator. This is something I've been wanting to do for quite a while, so the class project was a convenient opportunity to 
+				try out some of the ideas I've been kicking around for the last few years.
+			</p>
+
+			<p>The final system requirements I came up with were:</p>
+			<ol>
+				<li>Frequency range: 1 Hz to 20 kHz</li>
+				<li>Frequency resolution: 1 Hz</li>
+				<li>Frequency accuracy: &PlusMinus; 5%</li>
+				<li>Waveform shapes: sine, square, triangle</li>
+				<li>User interface: must be able to configure frequency and waveform, must show current settings</li>
+			</ol>
+
+			<h3>Main Controller</h3>
+
+			<a href="images/wavegen/tiva.png">
+				<figure style="float: left">
+					<img src="images/wavegen/tiva.png" alt="Tiva C-Series board connections">
+					<figcaption>Tiva C-Series board connections (click to enlarge)</figcaption>
+				</figure>
+			</a>
+
+			<p>The design is based around the development board we used in other assignments for this class: a Texas Instruments EK-TM4C123GXL evaluation board with a Tiva 
+				TM4C123GH6PM microcontroller. I chose to use this board for a few reasons: (1) I already had one, (2) it has a convenient set of expansion headers, and (3) the 
+				microcontroller included all the peripherals I needed (SPI, I<sup>2</sup>C, and several GPIO). All of the necessary pins are exposed on two standard 2.54 mm pin 
+				headers.
+			</p>
+
+			<p>As for software, I wrote the firmware for the microcontroller in C using Texas Instruments' Code Composer Studio. I utilized the TivaWare driver library and 
+				chose to use a foreground-background software architecture. The analog waveform is generated using the direct digital synthesis (DDS) technique which requires 
+				a periodic interrupt. This periodic interrupt triggers a DAC update, while the background loop checks the user input state and handles changing waveform parameters. 
+			</p>
+
+			<p>The sampling rate for a DDS system depends on the maximum output frequency. Since I wanted to be able to generate more than just a sine wave, I needed to account 
+				for the higher-frequency components of square and triangle waves. For the best approximation of a square and triangle wave, I wanted to include as many harmonics 
+				as possible. The maximum output frequency I chose was 20 kHz, so I aimed for at least the 10th harmonic. After some experimentation, I settled on a sampling rate of 
+				640 kHz. This allows for 32 samples per fundamental period at the highest output frequency, meaning it can include up-to the 16th harmonic. (note: this explanation 
+				does not take into account the issue of DAC aliasing/image frequencies).				
+			</p>
+
+			<p>For a good explanation of DDS and how such a system works, check out <a href="https://www.analog.com/media/en/training-seminars/tutorials/MT-085.pdf">this Analog Devices app note</a>.</p>
+
+			<h3>User Interface</h3>
+
+			<a href="images/wavegen/buttons.png">
+				<figure style="float: right">
+					<img src="images/wavegen/buttons.png" alt="Button circuitry">
+					<figcaption>Button circuitry (click to enlarge)</figcaption>
+				</figure>
+			</a>
+
+			<p>I ended up choosing to use a set of push buttons and a character LCD as the user interface. The buttons are set up as a directional pad, so there are left/right 
+				and up/down controls. This lets the user select the digit of the frequency and increment/decrement that digit. There is an additional button which changes the 
+				shape of the waveform being generated (sine, square, or triangle).
+			</p>
+
+			<p>While figuring out how to implement the buttons, I realized a dedicated chip would simplify the wiring and allow for easier software implementation. I chose to use 
+				a Microchip MCP23008 I<sup>2</sup>C GPIO expander. The GPIO expander pins are configured as inputs, and the microcontroller only has to read the button states 
+				over I<sup>2</sup>C.
+			</p>
+
+			<a href="images/wavegen/lcd.png">
+				<figure style="float: left">
+					<img src="images/wavegen/lcd.png" alt="LCD circuitry">
+					<figcaption>LCD circuitry (click to enlarge)</figcaption>
+				</figure>
+			</a>
+
+			<p>The other half of the user interface is the LCD. I went with a 16x2 character LCD based on the Sitronix ST7066U controller. The ST7066U is drop-in compatible with 
+				the Hitachi HD44780U which I already have some experience with. The instruction set is identical, at least for the basic functionality.
+			</p>
+
+			<p>Since I didn't want to use any third-party libraries for this project (aside from TI's TivaWare), I opted to write my own driver functions for the ST7066U/HD44780U 
+				LCD. This turned out to be quite tricky at first, as there are a few quirks with these chips. For instance, the command to set the instruction width needs be sent 
+				several times or the chip may not receive it. Once I figured this out everything else worked perfectly. I had originally planned to use the LCD in 4-bit mode to 
+				save some wiring and GPIO pins, but I was unable to make this work reliablly. The LCD would only properly initialize about 5%-10% of the time. Instead I decided 
+				to use the full 8-bit parallel bus, which is much easier to implement and worked way more consistently. The only problem is, I ran out of compatible GPIO pins on 
+				the microcontroller.
+			</p>
+
+			<p>To solve the GPIO count issue, I used TI's version of the 74HC595 serial-to-parallel shift register, allowing me to reduce the required pin count for the LCD 
+				interface by about half. Normally, these LCDs use a bidirectional communication bus, but you do not need to read any status registers from the LCD if you operate it 
+				slower than necessary. All of the instructions have an upper bound for the timing requirements, so as long as the microcontroller issues commands slower than the 
+				required timing, everything works just fine. This is the only reason I was able to use such a unidirectional shift register.
+			</p>
+
+			<h3>Output Section</h3>
+
+			<a href="images/wavegen/output.png">
+				<figure style="float: right">
+					<img src="images/wavegen/output.png" alt="Output circuitry">
+					<figcaption>Output circuitry (click to enlarge)</figcaption>
+				</figure>
+			</a>
+
+			<p>For the output section I chose to use a Microchip MCP4812 SPI DAC with an RL low-pass reconstruction filter. I originally planned to include a buffer after the filter 
+				in order to make the output capable of driving a 50 &ohm; load, but I realized (much too far into the project) that I didn't have any 3.3 V capable op-amps and there 
+				was not enough time to place a DigiKey order.
+			</p>
+
+			<p>The reconstruction filter is there to remove the sampling noise from the output. Like an ADC, a sampling DAC has the potential to cause aliasing, so there must be a 
+				low-pass filter to remove any "image" frequency components. These appear centered around the sampling frequency when viewed on a spectrum analyzer. I chose a desired 
+				cutoff frequency of 320 kHz, which attenuates the image frequencies (the worst of which fall between 620 kHz and 660 kHz) while minimally affecting the desired 
+				frequency components. The -3dB cutoff frequency of my RL filter is roughly 350 kHz, which is as close as I could get with the selection of passive components I had 
+				on hand.
+			</p>
+
+			<a href="images/wavegen/image_freq_annotated.png">
+				<figure style="float: left">
+					<img src="images/wavegen/image_freq_annotated.png" alt="Image frequencies">
+					<figcaption>Image frequencies shown on an oscilloscope (click to enlarge)</figcaption>
+				</figure>
+			</a>
+
+			<p>In the screenshot shown, I have the function generator set up to output a 20 kHz sine wave. The oscilloscope is configured to compute the FFT of the incoming signal. 
+				Since the waveform has a DC offset (a consequence of not having a buffered output), you can see a spike at 0 Hz. The next spike is the fundamental 20 kHz frequency. 
+				On the middle of the FFT plot, there are some frequency components at <b>f<sub>s</sub> &PlusMinus; f<sub>0</sub></b>. These are the image frequencies caused by DAC 
+				sampling. I found it interesting that these frequency components somewhat resemble carrier-suppressed amplitude modulation in this case. 
+			</p>
+
+			<p>Unfortunately though, this filtering comes with its own consequences. Because ideal vertical-cutoff filters don't exist, there will be some attenuation of the desired 
+				frequency components. I tried to keep this to a minimum, but it does cause some distortion of the generated waveforms. For example, though the sine wave is not 
+				negatively affected, the square wave has softer leading edges and the triangle wave is not as sharp.
+			</p>
+
+			<a href="images/wavegen/tri_filter_before_after.png">
+				<figure style="float: right">
+					<img src="images/wavegen/tri_filter_before_after.png" alt="Triangle wave distortion">
+					<figcaption>Triangle wave distortion, before and after filtering (click to enlarge)</figcaption>
+				</figure>
+			</a>
+			
+			
+		</div>
+	</div>
+
+	<!-- FOOTER -->
+	<div id="footer">
+		<p>&copy; Nolan Adams, 2020-2024</p>
+		<p id="last-modified" ></p>
+		<p><a style="font-size: 12px;" href="../privacy.html">Privacy</a></p>
+
+		<script>
+			lastModifiedField = document.getElementById("last-modified");
+			lastModifiedField.textContent = "Last modified ".concat(document.lastModified);
+		</script>
+	</div>
+
+</body>
+</html> 
