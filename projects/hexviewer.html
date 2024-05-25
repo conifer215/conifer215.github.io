@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Hex Viewer | Projects | Nolan Adams</title>
+	<link rel="stylesheet" type="text/css" href="../resources/main.css">
+	<link rel="icon" type="image/bmp" href="../resources/favicon_blk.bmp">
+	<script src="../resources/script.js"></script>
+</head>
+
+<body>
+
+	<!-- HEADER -->
+	<div id="header">
+		<p><b>Nolan Adams</b></p>
+	</div>
+
+	<div id="body-container">
+		<!-- SIDEBAR -->
+		<div id="sidebar-main" class="sidebar-col">
+			<a href="../index.html" class="sidebar-link">Home</a>
+			<a href="../aboutme.html" class="sidebar-link">About Me</a>
+			<a href="../projects.html" class="sidebar-link sidebar-active">Projects</a>
+			<a href="https://www.linkedin.com/in/nolanadams/" class="sidebar-link">LinkedIn</a>
+		</div>
+
+		<!-- MAIN CONTENT -->
+		<div id="body-content">
+			<input id="sidebar-button" type="button" value="Hide sidebar" onclick="sidebarToggle()"/>
+
+			<p><a href="../projects.html">Back to Projects</a>
+
+			<h2>Hex Viewer</h2>
+			<h4>Dec. 2023</h4>
+			
+			<a href="images/hex_lorem.png">
+				<figure style="float: right;">
+					<img src="images/hex_lorem.png" alt="Hex viewer example">
+					<figcaption>Reading the contents of a file</figcaption>
+				</figure>
+			</a>
+
+			<a class="linkbtn" style="background-color: #000000" href="https://github.com/nolanpatrick/hexviewer">Github Project</a>
+			
+			<p>While working on a different project for one of my university classes, I found myself needing to examine files at a binary level. Usually, I would just download something
+			that already exists and get on with my life, but I realized I didn't like many of the existing options for hex viewers. I decided it would be an interesting side project to 
+			develop my own.</p>
+
+			<p>I was using a Linux computer at the time, and I am just a big fan of C, so I decided to write my hex viewer in C. I wanted to avoid using third-party libraries or 
+			dependencies so I stuck with the standard C library. This was easy since a hex viewer is a relatively straightforward tool.</p>
+
+			<p>My requirements were therefore:</p>
+			<ul>
+				<li>Use only what is available in the C standard library</li>
+				<li>Keep the code as simple as possible</li>
+				<li>Display 16 bytes per line, with a corresponding ASCII representation</li>
+				<li>Show the beginning byte address/location within the file for each line</li>
+			</ul>
+
+			<p>The resulting code ended up being just over 100 lines long, with an executable size of ~16 kB when compiled with GCC on Debian 12.</p>
+			
+			
+		</div>
+	</div>
+
+	<!-- FOOTER -->
+	<div id="footer">
+		<p>&copy; Nolan Adams, 2020-2024</p>
+		<p id="last-modified" ></p>
+		<p><a style="font-size: 12px;" href="../privacy.html">Privacy</a></p>
+
+		<script>
+			lastModifiedField = document.getElementById("last-modified");
+			lastModifiedField.textContent = "Last modified ".concat(document.lastModified);
+		</script>
+	</div>
+
+</body>
+</html> 
