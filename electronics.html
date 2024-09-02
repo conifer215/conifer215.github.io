@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Electronics | Nolan Adams</title>
+	<link rel="stylesheet" type="text/css" href="resources/main.css">
+	<link rel="icon" type="image/bmp" href="resources/favicon_blk.bmp">
+	<script src="resources/script.js"></script>
+</head>
+
+<body>
+
+	<!-- HEADER -->
+	<div id="header">
+		<p><b>Nolan Adams</b></p>
+	</div>
+
+	<div id="body-container">
+		<!-- SIDEBAR -->
+		<div id="sidebar-main" class="sidebar-col">
+			<a href="index.html" class="sidebar-link">Home</a>
+			<a href="aboutme.html" class="sidebar-link">About Me</a>
+			<a href="electronics.html" class="sidebar-link sidebar-active">Electronics</a>
+			<a href="photography.html" class="sidebar-link">Photography</a>
+			<a href="woodworking.html" class="sidebar-link">Woodworking</a>
+			<a href="https://www.linkedin.com/in/nolanadams/" class="sidebar-link">LinkedIn</a>
+		</div>
+
+
+		<!-- MAIN CONTENT -->
+		<div id="body-content">
+			<input id="sidebar-button" type="button" value="Hide sidebar" onclick="sidebarToggle()"/>
+
+			
+            <h2>Electronics/Programming Projects</h2>
+            <p>Here are a few of my past projects.</p>
+
+            <table>
+                <tr>
+                    <th scope="col">Year</th>
+                    <th scope="col">Projects</th>
+                </tr>
+                <tr>
+                    <td rowspan=1 valign=middle>2024</td>
+                    <td><a href="electronics/wavegen.html">Digital Function Generator</a></td>
+                </tr>
+                <tr>
+                    <td rowspan=2 valign=middle>2023</td>
+                    <td><a href="electronics/hexviewer.html">Hex Viewer</a></td>
+                </tr>
+                <tr>
+                    <!-- <td>2023</td> -->
+                    <td><a href="electronics/phase-shift-oscillator.html">Self-Learning: Phase-Shift Oscillator</a></td>
+                </tr>
+				<tr>
+                    <td rowspan=1 valign=middle>2022</td>
+                    <td><a href="electronics/z80_computer.html">Z80-based Single Board Computer</a></td>
+                </tr>
+                <tr>
+                    <td rowspan=1 valign=middle>2021</td>
+                    <td><a href="electronics/iphone_6s_rebuild.html">iPhone 6S Rebuild</a></td>
+                </tr>
+                <tr>
+                    <td rowspan=1 valign=middle>2020</td>
+                    <td><a href="electronics/site.html">This Website</a></td>
+                </tr>
+                <tr>
+                    <td rowspan=1 valign=middle>2017</td>
+                    <td><a href="electronics/stb.html">Sensor Test-bench (FRC)</a></td>
+                </tr>
+                <tr>
+                    <td rowspan=2 valign=middle>2016</td>
+                    <td><a href="electronics/atx_bench_psu.html">ATX Bench Power Supply</a></td>
+                </tr>
+                <tr>
+                    <!-- column 1 placeholder -->
+                    <td><a href="electronics/mtb.html">Motor Test-bench (FRC)</a></td>
+                </tr>
+            </table>
+		</div>
+	</div>
+
+	<!-- FOOTER -->
+	<div id="footer">
+		<p>&copy; Nolan Adams, 2020-2024</p>
+		<p id="last-modified" ></p>
+		<p><a style="font-size: 12px;" href="privacy.html">Privacy</a></p>
+
+		<script>
+			lastModifiedField = document.getElementById("last-modified");
+			lastModifiedField.textContent = "Last modified ".concat(document.lastModified);
+		</script>
+	</div>
+
+</body>
+</html> 
