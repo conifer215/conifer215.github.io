@@ -109,25 +109,31 @@ table, th, td {
 figure {
 	display: flex;
     flex-flow: column;
-    padding: 15px;
-	padding-right: 15px;
-    max-width: 300px;
+    padding: 5px;
+	/*padding-right: 15px;*/
+    width: min-content; /* restricts figure width to be proportional to image, keeps text from making image wider */
 	height: auto;
-    margin: auto;
+    margin: 10px;
+    border-radius: 7px;
 }
 
 figure img {
-	width: 300px;
-	height: auto;
+	width: auto;
+	height: 250px;
 }
 
-figcaption {
+figure figcaption {
 	color: white;
     background-color: #181818;
     font: smaller Montserrat;
     padding: 5px;
     text-align: center;
 }
+
+a figure:hover {
+    
+    box-shadow: 0 0 5px black;
+ }
 
 /* Homepage stuff */
 

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Standing Desk | Woodworking | Nolan Adams</title>
+	<link rel="stylesheet" type="text/css" href="../resources/main.css">
+	<link rel="icon" type="image/bmp" href="../resources/favicon_blk.bmp">
+	<script src="../resources/script.js"></script>
+</head>
+
+<body>
+
+	<!-- HEADER -->
+	<div id="header">
+		<p><b>Nolan Adams</b></p>
+	</div>
+
+	<div id="body-container">
+		<!-- SIDEBAR -->
+		<div id="sidebar-main" class="sidebar-col">
+			<a href="../index.html" class="sidebar-link">Home</a>
+			<a href="../aboutme.html" class="sidebar-link">About Me</a>
+			<a href="../electronics.html" class="sidebar-link">Electronics</a>
+			<a href="../photography.html" class="sidebar-link">Photography</a>
+			<a href="../woodworking.html" class="sidebar-link sidebar-active">Woodworking</a>
+			<a href="https://www.linkedin.com/in/nolanadams/" class="sidebar-link">LinkedIn</a>
+		</div>
+
+		<!-- MAIN CONTENT -->
+		<div id="body-content">
+			<input id="sidebar-button" type="button" value="Hide sidebar" onclick="sidebarToggle()"/>
+
+			<p><a href="../woodworking.html">Back to Woodworking</a></p>
+
+			<h2>Standing Desk</h2>
+			<h4>Feb 2024</h4>
+
+			<a href="standing_desk/final.jpg">
+				<figure style="float: left;">
+					<img src="standing_desk/final.jpg" alt="Final standing desk">
+					<figcaption>Final Product (please excuse the messy desk)</figcaption>
+				</figure>
+			</a>
+
+			<p>I built this simple standing desk from some scrap wood I had sitting around. This was a one-night project motivated by procrastination.</p>
+
+			<p>I've wanted a standing desk for a while, but never wanted to spend the money to buy one. The opportunity to build one presented itself one night as I worked on
+				a lab report for one of my classes. I was looking for something I could justify doing instead of my class work, and I realized I had a scrap of a shelf board left 
+				over from an earlier project. I looked around and managed to scrounge together some scrap pieces of 2x1 boards barely long enough to build a miniature table with corresponding side rails and legs.
+				I ended up putting the whole thing together with only minimal hand tools and an improvised square while working on the basement floor.
+			</p>
+
+			<p>I won't pretend it's my finest quality work, especially since most of the joints are secured with reclaimed drywall screws and didn't use any stain or finish, but it's simple and does its job perfectly.</p>
+
+		</div>
+	</div>
+
+	<!-- FOOTER -->
+	<div id="footer">
+		<p>&copy; Nolan Adams, 2020-2024</p>
+		<p id="last-modified" ></p>
+		<p><a style="font-size: 12px;" href="../privacy.html">Privacy</a></p>
+
+		<script>
+			lastModifiedField = document.getElementById("last-modified");
+			lastModifiedField.textContent = "Last modified ".concat(document.lastModified);
+		</script>
+	</div>
+
+</body>
+</html> 
