@@ -1,1 +1,1 @@
-This is the repository for my personal website [https://nadams.net].
+My personal website, hosted using GitHub Pages
