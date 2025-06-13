@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Links | Nolan Adams</title>
+	<link rel="stylesheet" type="text/css" href="resources/main.css">
+	<link rel="icon" type="image/bmp" href="resources/favicon_blk.bmp">
+	<script src="resources/script.js"></script>
+</head>
+
+<body>
+
+	<!-- HEADER -->
+	<div id="header">
+		<p><b>Nolan Adams</b></p>
+	</div>
+
+	<div id="body-container">
+		<!-- SIDEBAR -->
+		<div id="sidebar-main" class="sidebar-col">
+			<a href="index.html" class="sidebar-link">Home</a>
+			<a href="aboutme.html" class="sidebar-link">About Me</a>
+			<a href="projects.html" class="sidebar-link">Projects</a>
+			<a href="photography.html" class="sidebar-link">Photography</a>
+			<!-- <a href="https://www\.linkedin\.com/in/nolanadams/" class="sidebar-link">LinkedIn</a> -->
+		</div>
+
+		<!-- MAIN CONTENT -->
+		<div id="body-content">
+			<input id="sidebar-button" type="button" value="Hide sidebar" onclick="sidebarToggle()"/>
+
+			<h2>Links</h2>
+
+			<h3>Disk Utilities for Windows (x86/amd64)</h3>
+
+			<ul>
+				<li><a href="https://rufus.ie/en/">Rufus</a></li>
+				<li><a href="https://www.sdcard.org/downloads/formatter/">SD Memory Card Formatter</a></li>
+			</ul>
+			
+			<h3>Operating Systems</h3>
+
+			<ul>
+				<li><a href="https://archlinux.org/">Arch Linux</a></li>
+				<li><a href="https://www.debian.org/">Debian</a></li>
+				<li><a href="https://fedoraproject.org/">Fedora</a></li>
+				<li><a href="https://ubuntu.com/desktop">Ubuntu (desktop)</a></li>
+				<li><a href="https://ubuntu.com/server">Ubuntu (server)</a></li>
+				<li><a href="https://www.microsoft.com/en-us/software-download/windows10">Windows 10</a></li>
+				<li><a href="https://www.microsoft.com/en-us/software-download/windows11">Windows 11</a></li>
+			</ul>
+
+			<h3>Software</h3>
+
+			<ul>
+				<li><a href="https://keepass.info/">KeePass</a></li>
+				<li><a href="https://veracrypt.io/">VeraCrypt</a></li>
+				<li><a href="https://code.visualstudio.com/">Visual Studio Code</a> or <a href="https://vscodium.com/">VSCodium</a></li>
+				
+			</ul>
+			
+		</div>
+	</div>
+
+	<!-- FOOTER -->
+	<div id="footer">
+		<p>&copy; Copyright 2020-2025, Nolan Adams</p>
+		<p id="last-modified" ></p>
+		<p><a style="font-size: 12px;" href="privacy.html">Privacy</a></p>
+
+		<script>
+			lastModifiedField = document.getElementById("last-modified");
+			lastModifiedField.textContent = "Last modified ".concat(document.lastModified);
+		</script>
+	</div>
+
+</body>
+</html> 

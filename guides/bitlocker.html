@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Enable BitLocker with Boot PIN | Nolan Adams</title>
+	<link rel="stylesheet" type="text/css" href="../resources/main.css">
+	<link rel="icon" type="image/bmp" href="../resources/favicon_blk.bmp">
+	<script src="../resources/script.js"></script>
+</head>
+
+<body>
+
+	<!-- HEADER -->
+	<div id="header">
+		<p><b>Nolan Adams</b></p>
+	</div>
+
+	<div id="body-container">
+		<!-- SIDEBAR -->
+		<div id="sidebar-main" class="sidebar-col">
+			<a href="../index.html" class="sidebar-link">Home</a>
+			<a href="../aboutme.html" class="sidebar-link">About Me</a>
+			<a href="../projects.html" class="sidebar-link">Projects</a>
+			<a href="../photography.html" class="sidebar-link">Photography</a>
+			<!-- <a href="https://www\.linkedin\.com/in/nolanadams/" class="sidebar-link">LinkedIn</a> -->
+		</div>
+
+		<!-- MAIN CONTENT -->
+		<div id="body-content">
+			<input id="sidebar-button" type="button" value="Hide sidebar" onclick="sidebarToggle()"/>
+
+			<h2>Enable BitLocker with Boot PIN</h2>
+			<p>How to set up BitLocker on Windows 10 and 11. Ensure the system is up-to-date before proceeding.</p>
+
+			<p>BitLocker is only supported on Windows Education, Professional, Professional for Workstations, and Enterprise editions.</p>
+
+			<!-- <img src="bitlocker/windows_installer_sku.jpg"> -->
+
+			<br>
+
+			<h3>Step 1: Enable BitLocker</h3>
+			<p>Go to the BitLocker settings and click <b>Turn on BitLocker</b>.</p>
+			<img src="bitlocker/step1_enable_bitlocker.png">
+			<br>
+			<br>
+
+			<h3>Step 2: Recovery Key</h3>
+			<p>Save your recovery key in a safe location. It must be on a different drive than the one you are encrypting. This recovery key is needed to decrypt the drive in the event you lose or forget your PIN.</p>
+			<img src="bitlocker/step2_recovery_key2.png">
+			<br>
+			<br>
+
+			<h3>Step 3: How Much to Encrypt</h3>
+			<p>Choose either to encrypt the entire drive or just the allocated space.</p>
+			<img src="bitlocker/step3_entire_drive_or_used_space.png">
+			<br>
+			<br>
+
+			<h3>Step 4: Encryption Mode</h3>
+			<p>Choose the encryption mode for the drive.</p>
+			<img src="bitlocker/step4_encryption_mode.png">
+			<br>
+			<br>
+
+			<h3>Step 5: BitLocker Check</h3>
+			<p>Check whether the system can successfully read the encryption key on boot. This step requires a restart.</p>
+			<img src="bitlocker/step5_bitlocker_check.png">
+			<br>
+			<br>
+
+			<h3>Step 6: Restart</h3>
+			<img src="bitlocker/step6_restart.png">
+			<br>
+			<br>
+
+			<h3>Step 7: BitLocker Check</h3>
+			<p>Click the BitLocker notification icon to see the progress.</p>
+			<img src="bitlocker/step7_notification.png">
+			<br>
+			<br>
+
+			<h3>Step 8: Encryption Complete</h3>
+			<p>Wait for BitLocker to finish encrypting the drive.</p>
+			<img src="bitlocker/step8_complete.png">
+			<br>
+			<br>
+
+			<h3>Step 9: Group Policy Editor</h3>
+			<p>Now we will configure BitLocker to require a decryption PIN on boot. Open the Group Policy Editor and navigate to <b>Computer Configuration > Administrative Templates > Windows Components > BitLocker Drive Encryption > Operating System Drives</b>.</p>
+			<p>Select the policy titled <b>Require additional authentication at startup</b>.</p>
+			<img src="bitlocker/step9_gpedit.png">
+			<br>
+			<br>
+
+			<h3>Step 10: Configure Policy</h3>
+			<p>Enable the policy, and configure it as shown below. You may choose either <b>Allow</b> or <b>Require</b> under the dropdown menus. Click <b>OK</b> when finished.</p>
+			<img src="bitlocker/step10_pin_allow.png">
+			<br>
+			<br>
+
+			<h3>Step 11: Configure PIN</h3>
+			<p>Re-open the BitLocker settings and click <b>Change how drive is unlocked at startup</b>.</p>
+			<img src="bitlocker/step11_setup_pin.png">
+			<br>
+			<br>
+
+			<h3>Step 12: Enable PIN</h3>
+			<p>Click the button labeled <b>Enter a PIN (recommended)</b>.</p>
+			<img src="bitlocker/step12_pin.png">
+			<br>
+			<br>
+
+			<h3>Step 13: Enter PIN</h3>
+			<p>Enter your desired PIN and click <b>Set PIN</b>.</p>
+			<img src="bitlocker/step13_enter_pin.png">
+			<br>
+			<br>
+			
+			<h3>Step 14: Success</h3>
+			<p>Reboot your computer. You will now be prompted to enter your PIN at bootup in order to decrypt your drive.</p>
+			<img src="bitlocker/step14_success.png">
+			<br>
+			<br>
+
+		</div>
+	</div>
+
+	<!-- FOOTER -->
+	<div id="footer">
+		<p>&copy; Copyright 2020-2025, Nolan Adams</p>
+		<p id="last-modified" ></p>
+		<p><a style="font-size: 12px;" href="../privacy.html">Privacy</a></p>
+
+		<script>
+			lastModifiedField = document.getElementById("last-modified");
+			lastModifiedField.textContent = "Last modified ".concat(document.lastModified);
+		</script>
+	</div>
+
+</body>
+</html> 
